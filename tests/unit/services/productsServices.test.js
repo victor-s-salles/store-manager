@@ -26,4 +26,7 @@ describe('Verificando o service dos produtos', function () {
     expect(result.type).to.be.equal(null)
     expect(result.message).to.be.deep.equal(productList[0])
   })
+    afterEach(function () {
+    sinon.restore();
+  });
 })
