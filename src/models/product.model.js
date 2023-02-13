@@ -1,8 +1,8 @@
-const connction = require('./connection');
+const connection = require('./connection');
 
 const findAll = async () => {
-  const [result] = connction.execute(
-    'SELECT * FROM StoreManager.products;',
+  const [result] = await connection.execute(
+    'SELECT * FROM StoreManager.products',
   );
 
   return result;
