@@ -5,6 +5,18 @@ const findAll = async () => {
   const sales = await salesModel.findAll();
   return { type: null, message: sales };
 };
+
+const findById = async (id) => {
+  const error = schema.validateId(id);
+  if (error.type) return error;
+  
+  const sales = await salesModel.findById(id);
+
+  if (sales.length === 0) return { type: 'SALE_NOT_FOUND', message: 'Sale not found' };
+  
+  return { type: null, message: sales };
+};
+
 const insertNewSale = async (sales) => {
   let arraySales = sales;
   if (!Array.isArray(sales)) { 
@@ -48,4 +60,5 @@ const insertNewSale = async (sales) => {
 module.exports = {
   findAll,
   insertNewSale,
+  findById,
 };
