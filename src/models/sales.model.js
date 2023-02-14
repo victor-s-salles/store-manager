@@ -13,12 +13,12 @@ const createNewSale = async () => {
    );
    return insertId;
 };
-
 const insertNewSale = async (id, sales) => {
-    await connection.execute(
+  const [{ insertId }] = await connection.execute(
       'INSERT INTO sales_products (sale_id, product_id, quantity) VALUE (?,?,?)',
       [Number(id), sales.productId, sales.quantity],
-    );
+  );
+  return insertId;
 };
 
 module.exports = {

@@ -4,7 +4,7 @@ const sinon = require('sinon')
 const { productService } = require('../../../src/services')
 const { productModel } = require('../../../src/models')
 
-const connection = require('../../../src/models/connection')
+// const connection = require('../../../src/models/connection')
 
 const {productList} = require('./mocks/product.service.mock')
 

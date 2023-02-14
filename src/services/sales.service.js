@@ -5,7 +5,6 @@ const findAll = async () => {
   const sales = await salesModel.findAll();
   return { type: null, message: sales };
 };
-
 const insertNewSale = async (sales) => {
   let arraySales = sales;
   if (!Array.isArray(sales)) { 
@@ -29,22 +28,22 @@ const insertNewSale = async (sales) => {
    return { type: null, message: finalSale };
 };
 
-const test = [
-  {
-    productId: 1,
-    quantity: 1000,
-  },
-  {
-    productId: 2,
-    quantity: -5000,
-  },
-];
+// const test = [
+//   {
+//     productId: 1,
+//     quantity: 1000,
+//   },
+//   {
+//     productId: 2,
+//     quantity: -5000,
+//   },
+// ];
 
 // const test2 = {
 //     productId: 2,
 //     quantity: -10,
 //   };
-insertNewSale(test);
+// insertNewSale(test);
 
 module.exports = {
   findAll,
