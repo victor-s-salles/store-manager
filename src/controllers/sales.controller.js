@@ -40,7 +40,6 @@ const deleteSale = async (req, res) => {
 const updateSale = async (req, res) => {
   const { body } = req;
   const { id } = req.params;
-
   const { type, message } = await salesService.updateSale(id, body);
 
   if (type) { return res.status(errorMap.mapError(type)).json({ message }); }
