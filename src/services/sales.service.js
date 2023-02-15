@@ -40,25 +40,21 @@ const insertNewSale = async (sales) => {
    return { type: null, message: finalSale };
 };
 
-// const test = [
-//   {
-//     productId: 1,
-//     quantity: 1000,
-//   },
-//   {
-//     productId: 2,
-//     quantity: -5000,
-//   },
-// ];
+const deleteSale = async (id) => {
+  const error = schema.validateId(id);
 
-// const test2 = {
-//     productId: 2,
-//     quantity: -10,
-//   };
-// insertNewSale(test);
+  if (error.type) return error;
+
+  const rows = await salesModel.deleteSale(id);
+
+  if (Number(rows) === 0) return { type: 'SALE_NOT_FOUND', message: 'Sale not found' };
+
+  return { type: null, message: '' };
+};
 
 module.exports = {
   findAll,
   insertNewSale,
   findById,
+  deleteSale,
 };
