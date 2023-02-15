@@ -22,17 +22,18 @@ const insertNewSale = async (sales) => {
   if (!Array.isArray(sales)) { 
     arraySales = [arraySales];
   }
-
   const error = await schema.validateSales(arraySales);
-  
   if (error.type) return error;
   const saleId = await salesModel.createNewSale();
-
-  if (Array.isArray(arraySales)) {
+    // arraySales.forEach(async (sale) => {
+    //   await salesModel.insertNewSale(saleId, sale);
+    // });
+  async function getTodos() {
     arraySales.forEach(async (sale) => {
       await salesModel.insertNewSale(saleId, sale);
     });
   }
+   await getTodos();
   const finalSale = {
     id: saleId,
     itemsSold: sales,
@@ -53,11 +54,17 @@ const deleteSale = async (id) => {
 };
 
 const finalUpdateSale = async (id, arraySales, originalSales) => {
-  if (Array.isArray(arraySales)) {
-    arraySales.forEach(async (sale) => {
+    // arraySales.forEach(async (sale) => {
+    //   await salesModel.insertNewSale(id, sale);
+    // });
+  
+  async function getTodos() {
+  arraySales.forEach(async (sale) => {
       await salesModel.insertNewSale(id, sale);
     });
   }
+  await getTodos();
+
   const finalSale = {
     saleId: id,
     itemsUpdated: originalSales,
