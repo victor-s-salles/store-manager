@@ -55,7 +55,7 @@ describe('Testa de unidade da camada Controller dos produtos', function () {
     res.json = sinon.stub().returns(res)
     sinon
       .stub(productService, 'getProductsById')
-      .resolves({ type: 'PASSENGER_NOT_FOUND', message: 'Product not found' })
+      .resolves({ type: 'PRODUCT_NOT_FOUND', message: 'Product not found' })
     
      await productController.listProductsById(req, res);
     

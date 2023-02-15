@@ -14,7 +14,7 @@ const getProductsById = async (productId) => {
 
   const product = await productModel.findById(productId);
 
-  if (!product) return { type: 'PASSENGER_NOT_FOUND', message: 'Product not found' };
+  if (!product) return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' };
 
    return { type: null, message: product };
 };
@@ -28,8 +28,25 @@ const insertProduct = async (productName) => {
   return { type: null, message: newProduct };
 };
 
+const updateProduct = async (id, name) => {
+   const error = schema.validateId(id);
+
+  if (error.type) return error;
+
+  const rows = await productModel.updateProduct(id, name);
+
+  if (Number(rows) === 0) return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' };
+
+  const product = await productModel.findById(id);
+
+  product.id = id;
+
+  return { type: null, message: product };
+};
+
 module.exports = {
   getProducts,
   getProductsById,
   insertProduct,
+  updateProduct,
 };
