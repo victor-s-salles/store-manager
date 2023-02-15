@@ -44,10 +44,18 @@ const deleteSale = async (id) => {
   return affectedRows;
 };
 
+const insertUpdateSale = async (id) => {
+    await connection.execute(
+    'INSERT INTO sales VALUE(?, (NOW()))',
+    [id],
+  );
+};
+
 module.exports = {
   insertNewSale,
   createNewSale,
   findAll,
   findById,
   deleteSale,
+  insertUpdateSale,
 };
