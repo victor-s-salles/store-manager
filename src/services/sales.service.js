@@ -13,7 +13,7 @@ const findById = async (id) => {
   const sales = await salesModel.findById(id);
 
   if (sales.length === 0) return { type: 'SALE_NOT_FOUND', message: 'Sale not found' };
-  
+
   return { type: null, message: sales };
 };
 
