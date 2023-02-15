@@ -26,6 +26,23 @@ describe('Verificando o service dos produtos', function () {
     expect(result.type).to.be.equal(null)
     expect(result.message).to.be.deep.equal(productList[0])
   })
+
+  it('Testa se ao deletar um produto, retorna corretamente', async function () {
+    sinon.stub(productModel, 'deleteProduct').resolves(1)
+
+    const result = await productService.deleteProduct(2)
+
+    expect(result.type).to.be.equal(null)
+    expect(result.message).to.be.equal('')
+  })
+   it('Testa se ao deletar um produto inexistente, retorna corretamente', async function () {
+    sinon.stub(productModel, 'deleteProduct').resolves(0)
+
+    const result = await productService.deleteProduct(2)
+
+    expect(result.type).to.be.equal('PRODUCT_NOT_FOUND')
+    expect(result.message).to.be.equal('Product not found')
+  })
     afterEach(function () {
     sinon.restore();
   });
