@@ -31,9 +31,7 @@ const insertNewSale = async (sales) => {
   //   });
   const promises = arraySales.map((sale) => salesModel.insertNewSale(saleId, sale)); 
 
-  const result = Promise.all(promises);
-  
-  console.log(result);
+  await Promise.all(promises);
   
   const finalSale = {
     id: saleId,
@@ -63,8 +61,8 @@ const finalUpdateSale = async (id, arraySales, originalSales) => {
 
   const promises = arraySales.map((sale) => salesModel.insertNewSale(id, sale)); 
 
-  const result = Promise.all(promises);
-  console.log(result);
+  await Promise.all(promises);
+
   const finalSale = {
     saleId: id,
     itemsUpdated: originalSales,
