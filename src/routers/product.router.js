@@ -6,6 +6,8 @@ const validateNewProductFields = require('../middlewares/validateNewProductField
 
 const router = express.Router();
 
+router.get('/search', productController.searchProducts);
+
 router.get('/', productController.listProducts);
 
 router.get('/:id', productController.listProductsById);
