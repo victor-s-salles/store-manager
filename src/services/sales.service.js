@@ -25,15 +25,16 @@ const insertNewSale = async (sales) => {
   const error = await schema.validateSales(arraySales);
   if (error.type) return error;
   const saleId = await salesModel.createNewSale();
-    // arraySales.forEach(async (sale) => {
-    //   await salesModel.insertNewSale(saleId, sale);
-    // });
-  async function getTodos() {
-    arraySales.forEach(async (sale) => {
-      await salesModel.insertNewSale(saleId, sale);
-    });
-  }
-   await getTodos();
+  
+  // arraySales.forEach(async (sale) => {
+  //     await salesModel.insertNewSale(saleId, sale);
+  //   });
+  const promises = arraySales.map((sale) => salesModel.insertNewSale(saleId, sale)); 
+
+  const result = Promise.all(promises);
+  
+  console.log(result);
+  
   const finalSale = {
     id: saleId,
     itemsSold: sales,
@@ -54,17 +55,16 @@ const deleteSale = async (id) => {
 };
 
 const finalUpdateSale = async (id, arraySales, originalSales) => {
-    // arraySales.forEach(async (sale) => {
-    //   await salesModel.insertNewSale(id, sale);
-    // });
-  
-  async function getTodos() {
-  arraySales.forEach(async (sale) => {
-      await salesModel.insertNewSale(id, sale);
-    });
-  }
-  await getTodos();
+  // arraySales.forEach(
+  //   async (sale) => {
+  //     await salesModel.insertNewSale(id, sale);
+  //   },
+  // );
 
+  const promises = arraySales.map((sale) => salesModel.insertNewSale(id, sale)); 
+
+const result = Promise.all(promises);
+console.log(result);
   const finalSale = {
     saleId: id,
     itemsUpdated: originalSales,
