@@ -24,14 +24,14 @@ describe('Testes de unidade do model dos produtos', function () {
     expect(result).to.be.deep.equal(products[0])
   })
   it('A inserção de um produto no banco', async function () {
-    sinon.stub(connection, 'execute').resolves(2)
+    sinon.stub(connection, 'execute').resolves([{insertId: 2}])
     
     const result = await productModel.insertProduct("ProdutoX")
 
-    expect(result).to.be.deep.equal(2)
+    expect(result).to.be.equal(2)
   })
    it('A atualização de um produto no banco', async function () {
-    sinon.stub(connection, 'execute').resolves(1)
+    sinon.stub(connection, 'execute').resolves([{affectedRows: 1}])
     
     const result = await productModel.updateProduct(1,'Novo nome')
 
@@ -39,7 +39,7 @@ describe('Testes de unidade do model dos produtos', function () {
    })
   
     it('A remoção de um produto no banco', async function () {
-    sinon.stub(connection, 'execute').resolves(1)
+    sinon.stub(connection, 'execute').resolves([{affectedRows: 1}])
     
     const result = await productModel.deleteProduct(1)
 
