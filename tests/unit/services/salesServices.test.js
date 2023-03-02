@@ -59,6 +59,14 @@ describe('Verificando o service dos sales', function () {
     expect(result.message).to.be.deep.equal(returnNewSale)
 
   })
+
+   it('Testa a atualização de uma sale que não existe', async function () {
+    sinon.stub(salesModel, 'deleteSale').resolves(0)
+
+    const result = await salesService.updateSale(999, newSale)
+
+    expect(result).to.be.deep.equal({ type: 'SALE_NOT_FOUND', message: 'Sale not found' })
+  })
   afterEach(function () {
     sinon.restore();
   });

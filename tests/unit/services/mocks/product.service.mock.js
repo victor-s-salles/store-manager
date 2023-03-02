@@ -3,7 +3,8 @@ const productList = [
 { id: 2, name: 'Traje de encolhimento' },
 { id: 3, name: 'Escudo do Capitão América' }
 ]
-
+const productIdOne = { id: 1, name: 'Martelo de Thor' }
 module.exports = {
   productList,
+  productIdOne,
 }
