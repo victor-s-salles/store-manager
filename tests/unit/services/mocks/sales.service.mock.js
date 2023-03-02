@@ -5,6 +5,14 @@ const allSales = {
      { id: 2, date: '2023-02-15T00:22:16.000Z' }
   ]
 }
+const oneSale = {
+  message: {
+      date: "2023-02-15T00:22:16.000Z",
+      id: 1
+           },
+  type: null
+}
+
 
 const newSale = {
     "productId": 1,
@@ -30,4 +38,5 @@ module.exports = {
   newSale,
   returnNewSale,
   allProducts,
+  oneSale,
 }
