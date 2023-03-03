@@ -3,6 +3,11 @@ const newSale = {
     "quantity": 10
 }
 
+ const finalSale = {
+    saleId: 2,
+    itemsUpdated: newSale,
+  };
+
 const returnNewSale = {
   type: null,
   message: {
@@ -61,4 +66,5 @@ module.exports = {
   responseNewSale,
   allSales,
   saleById,
+  finalSale,
 }
