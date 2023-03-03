@@ -91,7 +91,7 @@ describe('Testa de unidade da camada Controller dos sales', function () {
     sinon.stub(salesService, 'updateSale')
       .resolves({type: null, message: finalSale})
     
-     await salesControlller.updateSale(req, res)
+      await salesControlller.updateSale(req, res)
 
       expect(res.status).to.have.been.calledWith(200)
       expect(res.json).to.have.been.calledWith(finalSale)
