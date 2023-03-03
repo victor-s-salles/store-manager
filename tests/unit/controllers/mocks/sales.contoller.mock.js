@@ -57,9 +57,6 @@ const saleById = {
   message: [ { date: '2023-02-15T23:44:53.000Z', productId: 3, quantity: 15 } ]
 }
 
-
-
-
 module.exports = {
   newSale,
   returnNewSale,
